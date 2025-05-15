@@ -79,3 +79,44 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+/*Responsive Layout*/
+.main-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.editor-panel,
+.results-panel {
+  padding: 16px;
+  overflow: auto;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.results-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+@media (min-width: 768px) {
+  .main-content {
+    flex-direction: row;
+  }
+
+  .editor-panel {
+    width: 50%;
+    border-right: 1px solid #e5e7eb;
+    border-bottom: none;
+  }
+
+  .results-panel {
+    width: 50%;
+    border-left: 1px solid #e5e7eb;
+    border-bottom: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+}

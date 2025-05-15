@@ -146,17 +146,10 @@ function App() {
       </div>
 
 
-      {/* Main Content: fills remaining space */}
-      <div
-        style={{
-          flexGrow: 1,
-          display: 'grid',
-          gridTemplateColumns: '1fr 1fr',
-          overflow: 'hidden',
-        }}
-      >
-        {/* SQL Input Area */}
-        <div style={{ padding: 16, overflow: 'auto', textAlign: 'left' }}>
+      <div className="main-content">
+        
+        {/* Editor Left Panel */}
+        <div className="editor-panel">
           <label style={{ fontWeight: 'bold', marginBottom: 8, display: 'block' }}>
             SQL Query:
           </label>
@@ -168,58 +161,53 @@ function App() {
             onChange={(value) => {
               setQuery(value);
               setSuggestedFix('');
-              setIssues([]);           // ✅ Clear validation results
-              setDiagnostics([]);      // ✅ Optional: clear visual lint markers
+              setIssues([]);
+              setDiagnostics([]);
             }}
             theme="light"
           />
         </div>
 
-        {/* Issues Area */}
-        <div
-          style={{
-            padding: 16,
-            overflow: 'auto',
-            borderLeft: '1px solid #e5e7eb',
-            textAlign: 'left',
-          }}
-        >
-          <label style={{ fontWeight: 'bold', marginBottom: 8, display: 'block' }}>
-            Issues Found:
-          </label>
-          {issues.length === 0 ? (
-            <p style={{ color: '#6b7280' }}>No issues found.</p>
-          ) : (
-            <ul
-              style={{
-                color: '#dc2626',
-                background: '#fef2f2',
-                padding: 12,
-                borderRadius: 4,
-                marginBottom: 16,
-              }}
-            >
-              {issues.map((issue, idx) => (
-                <li key={idx}>{issue}</li>
-              ))}
-            </ul>
-          )}
+        {/* Issues + Fix Right Panel */}
+        <div className="results-panel">
+          <div className="issues-panel">
+            <label style={{ fontWeight: 'bold', marginBottom: 8, display: 'block' }}>
+              Issues Found:
+            </label>
+            {issues.length === 0 ? (
+              <p style={{ color: '#6b7280' }}>No issues found.</p>
+            ) : (
+              <ul
+                style={{
+                  color: '#dc2626',
+                  background: '#fef2f2',
+                  padding: 12,
+                  borderRadius: 4,
+                  marginBottom: 16,
+                }}
+              >
+                {issues.map((issue, idx) => (
+                  <li key={idx}>{issue}</li>
+                ))}
+              </ul>
+            )}
+          </div>
 
-          <label style={{ fontWeight: 'bold', marginTop: 16, marginBottom: 8, display: 'block' }}>
-            Suggested Fix:
-          </label>
-          <CodeMirror
-            value={suggestedFix}
-            height="300px"
-            width="100%"
-            extensions={[sql()]}
-            onChange={() => {}}
-            theme="light"
-            editable={false}
-          />
-
+          <div className="fix-panel">
+            <label style={{ fontWeight: 'bold', marginBottom: 8, display: 'block' }}>
+              Suggested Fix:
+            </label>
+            <CodeMirror
+              value={suggestedFix}
+              height="300px"
+              width="100%"
+              extensions={[sql()]}
+              onChange={() => {}}
+              theme="light"
+              editable={false}
+            />
+          </div>
         </div>
-
       </div>
     </div>
   );
