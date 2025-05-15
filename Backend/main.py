@@ -36,7 +36,7 @@ origins = [
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,
+    allow_origins=["https://sqlvalidator.onrender.com/"],
     allow_methods=["*"],
     allow_headers=["*"],
 )
