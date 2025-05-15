@@ -1,5 +1,7 @@
+const API_URL = 'https://sqlvalidatorapi.onrender.com';
+
 export const validateQuery = async (query: string): Promise<string[]> => {
-  const res = await fetch('http://127.0.0.1:8001/api/query/validate', {
+  const res = await fetch(`${API_URL}/api/query/validate`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ query }),
