@@ -114,7 +114,7 @@ function App() {
           borderBottom: '1px solid #e5e7eb',
         }}
       >
-        <h1 style={{ fontSize: 24, fontWeight: 'bold' }}>SQL Validator Dashboard</h1>
+        <h1 style={{ fontSize: 24, fontWeight: 'bold' }}>SQL Validator</h1>
         <button
           onClick={handleSubmit}
           style={{
