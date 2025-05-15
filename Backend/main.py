@@ -71,14 +71,10 @@ def is_history_comment_present(lines):
     Expected format: <Month YYYY> - <Initials> - <Client>-<YY>-<####>
     """
     history_pattern = re.compile(
-        r"(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]*\s+\d{4}\s+-\s+[A-Z]{2,4}\s+-\s+[A-Z0-9]+-\d{2}-\d{4}",
+        r"(?:--)?\s*History:\s*(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]*\s+\d{4}\s+-\s+[A-Z]{2,4}\s+-\s+[A-Z0-9]+-\d{2}-\d{4}",
         re.IGNORECASE
     )
-    return any(
-        history_pattern.search(line)
-        for line in lines
-        if line.strip().startswith("History:")
-    )
+    return any(history_pattern.match(line.strip()) for line in lines)
 
 def check_nolock_rules(line, line_number):
     """
