@@ -1,6 +1,6 @@
 export const getAiSuggestion = async (query: string, issues: string[]): Promise<string> => {
   try {
-    const res = await fetch('http://127.0.0.1:8001/api/query/suggestfix', {
+    const res = await fetch(`${import.meta.env.VITE_API_URL}/api/query/suggestfix`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ query, issues }),
