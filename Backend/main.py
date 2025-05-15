@@ -31,7 +31,7 @@ app = FastAPI()
 # Configure CORS for local frontend development
 origins = [
     "http://localhost:5173",  # Vite React dev server
-    "https://sqlvalidator.onrender.com/"
+    "https://sqlvalidator.onrender.com"
 ]
 
 app.add_middleware(
